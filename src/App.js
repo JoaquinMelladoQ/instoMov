@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { StatusBar, SafeAreaView } from 'react-native';
 import Home from './screens/Home';
+import movies from './lib/movies.json';
 
-export default class App extends Component {
-  render() {
+export default App = () => {
     return (
-      <View>
-        <Home />
-      </View>
+      <SafeAreaView>
+        <StatusBar barStyle={'dark-content'}/>
+        <Home movies={movies}/>
+      </SafeAreaView>
     )
-  }
 }
 
