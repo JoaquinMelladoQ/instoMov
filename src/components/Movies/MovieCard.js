@@ -3,6 +3,7 @@ import {
   View, ActivityIndicator, 
   Text, Image, StyleSheet
 } from 'react-native';
+import Rating from '../Rating'
 
 const styles = StyleSheet.create({
   container: {
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     padding: 10,
+    textAlign: 'center',
   },
   subtitle: {
     flexDirection: 'row',
@@ -61,11 +63,12 @@ export default class MovieCard extends Component {
           onError={() => this.setState({ validImage: false })}
           onLoadEnd={() => this.setState({ isLoading: false })}
         />
-        <Text style={styles.title}>{title}</Text>
-      </View>
-      <View style={styles.subtitle}>
-        <Text style={styles.description}>{year}</Text>
-        <Text style={styles.description}>{imdbRating}</Text>
+        <Text style={[styles.title, styles.textColor]}>{title}</Text>
+          <Rating star />
+        <View style={styles.subtitle}>
+          <Text style={[styles.description, styles.textColor]}>{year}</Text>
+          <Text style={[styles.description, styles.textColor]}>{imdbRating}</Text>
+        </View>
       </View>
       </>
     );
