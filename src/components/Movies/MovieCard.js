@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { 
+  View, ActivityIndicator, 
+  Text, Image, StyleSheet
+} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,18 +17,57 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#34495e',
   },
+  title: {
+    fontSize: 18,
+    padding: 10,
+  },
+  subtitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  description: {
+    fontSize: 15,
+    padding: 10,
+  },
+  textColor: {
+    color: '#34495e',
+  },
 })
 
 export default class MovieCard extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      isLoading: true,
+      validImage: true,
+    }
+  }
+  
   render() {
-    const { posterurl } = this.props
+    const { posterurl, title, year, imdbRating } = this.props
+    const { isLoading, validImage } = this.state
     return (
+      <>
       <View style={styles.container}>
+        { isLoading && <ActivityIndicator color="red" size="large" /> }
         <Image 
           style={styles.image}
-          source={{ uri: posterurl }}
+          source={
+            validImage
+              ? { uri: posterurl }
+              : require('../../assets/No_Image_Available.jpeg')
+          }
+          onError={() => this.setState({ validImage: false })}
+          onLoadEnd={() => this.setState({ isLoading: false })}
         />
+        <Text style={styles.title}>{title}</Text>
       </View>
+      <View style={styles.subtitle}>
+        <Text style={styles.description}>{year}</Text>
+        <Text style={styles.description}>{imdbRating}</Text>
+      </View>
+      </>
     );
   };
 };
