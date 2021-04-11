@@ -14,11 +14,17 @@ export default class MoviesList extends Component {
           renderItem={({ 
             item: { 
               posterurl,
+              year,
+              title,
+              imdbRating,
             }
           }) => {
             return (
               <MovieCard 
                 posterurl={posterurl}
+                year={year}
+                title={title}
+                imdbRating={imdbRating}
               />
             )
           }}
