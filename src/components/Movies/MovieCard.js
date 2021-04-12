@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
   textColor: {
     color: '#34495e',
   },
+  bigFont: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   likeRating: {
     position: 'absolute',
     left: 20,
@@ -93,7 +97,10 @@ export default class MovieCard extends Component {
             starRating={starRating}
             onRatingPress={this.starRatingChange}
           />
-          <Text style={[styles.description, styles.textColor]}>{imdbRating}</Text>
+          <Text 
+            style={[styles.description, styles.textColor, styles.bigFont]}>
+            {imdbRating}
+          </Text>
         </View>
       </View>
       </>
