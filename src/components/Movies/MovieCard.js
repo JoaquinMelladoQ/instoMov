@@ -34,6 +34,15 @@ const styles = StyleSheet.create({
   textColor: {
     color: '#34495e',
   },
+  likeRating: {
+    position: 'absolute',
+    left: 20,
+    top: 20,
+    borderRadius: 30,
+    padding: 0,
+    elevation: 10,
+    backgroundColor: 'white',
+  },
 })
 
 export default class MovieCard extends Component {
@@ -43,12 +52,18 @@ export default class MovieCard extends Component {
     this.state = {
       isLoading: true,
       validImage: true,
+      starRating: 1,
+      like: false,
     }
   }
+
+  starRatingChange = starPosition => this.setState({ starRating: starPosition }) 
+
+  toggleLike = () => this.setState(({ like }) => ({ like: !like }))
   
   render() {
     const { posterurl, title, year, imdbRating } = this.props
-    const { isLoading, validImage } = this.state
+    const { isLoading, validImage, starRating, like } = this.state
     return (
       <>
       <View style={styles.container}>
@@ -63,10 +78,21 @@ export default class MovieCard extends Component {
           onError={() => this.setState({ validImage: false })}
           onLoadEnd={() => this.setState({ isLoading: false })}
         />
+        <View style={styles.likeRating}>
+          <Rating 
+            heart
+            like={like} 
+            onRatingPress={this.toggleLike}
+          />
+        </View>
         <Text style={[styles.title, styles.textColor]}>{title}</Text>
-          <Rating star />
         <View style={styles.subtitle}>
           <Text style={[styles.description, styles.textColor]}>{year}</Text>
+          <Rating 
+            star
+            starRating={starRating}
+            onRatingPress={this.starRatingChange}
+          />
           <Text style={[styles.description, styles.textColor]}>{imdbRating}</Text>
         </View>
       </View>

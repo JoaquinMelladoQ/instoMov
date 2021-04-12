@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { FlatList } from 'react-native';
 import MovieCard from './MovieCard';
 
-export default class MoviesList extends Component {
+export default class MoviesList extends PureComponent {
   render() {
     const { movies } = this.props
     return (

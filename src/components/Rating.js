@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
@@ -12,24 +12,31 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#95a5a6'
   },
+  heart: {
+    padding: 5,
+  },
 })
 
 export default class Rating extends Component {
   render() {
-    const { star, like } = this.props
+    const { 
+      star, starNumber = 5,
+      starRating, onRatingPress = () => {}, 
+      heart, like
+    } = this.props
 
     if (star) {
-      const starTotalNumber = Array.from({ length: 5 })
+      const starTotalNumber = Array.from({ length: starNumber })
         .map((_, index) => (
           <TouchableHighlight
             key={`star-${index}`}
             underlayColor="transparent"
-            onPress={() => {}}
+            onPress={() => onRatingPress(index + 1)}
           >
             <Icon 
               name="star"
               size={30}
-              color="#f1c40f"
+              color={index < starRating ? '#f1c40f' : '#95a6a6'}
             />
           </TouchableHighlight>
         ))
@@ -39,12 +46,21 @@ export default class Rating extends Component {
         </View>
       )
     }
-
-    return (
-      <View>
-        <Text></Text>
-      </View>
-    );
+    if (heart) {
+      return (
+        <TouchableOpacity 
+          style={styles.heart}
+          onPress={onRatingPress}
+        >
+          <Icon 
+            name="heart" 
+            size={30} 
+            color={like ? '#e74c3c' : '#95a6a6'}
+          />
+        </TouchableOpacity>
+      ) 
+    }
+    return null
   };
 };
 
