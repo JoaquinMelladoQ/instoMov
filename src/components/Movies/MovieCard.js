@@ -4,19 +4,13 @@ import {
   Text, Image, StyleSheet
 } from 'react-native';
 import Rating from '../Rating'
+import MovieCardImage from './MovieCardImage'
 
 const styles = StyleSheet.create({
   container: {
     borderRadius: 15,
     backgroundColor: '#ecf0f1',
     marginBottom: 20,
-  },
-  image: {
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    height: 300,
-    width: '100%',
-    backgroundColor: '#34495e',
   },
   title: {
     fontSize: 18,
@@ -72,13 +66,9 @@ export default class MovieCard extends Component {
       <>
       <View style={styles.container}>
         { isLoading && <ActivityIndicator color="red" size="large" /> }
-        <Image 
-          style={styles.image}
-          source={
-            validImage
-              ? { uri: posterurl }
-              : require('../../assets/No_Image_Available.jpeg')
-          }
+        <MovieCardImage 
+          validImage={validImage}
+          posterurl={posterurl}
           onError={() => this.setState({ validImage: false })}
           onLoadEnd={() => this.setState({ isLoading: false })}
         />
