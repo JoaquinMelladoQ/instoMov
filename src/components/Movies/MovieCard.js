@@ -71,6 +71,7 @@ export default class MovieCard extends Component {
           posterurl={posterurl}
           onError={() => this.setState({ validImage: false })}
           onLoadEnd={() => this.setState({ isLoading: false })}
+          onLongPress={() => console.log('on long press')}
         />
         <View style={styles.likeRating}>
           <Rating 

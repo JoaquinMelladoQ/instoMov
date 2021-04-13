@@ -16,11 +16,13 @@ const MovieCardImage = ({
   posterurl,
   onError = () => {},
   onLoadEnd = () => {},
+  onLongPress = () => {},
 }) => {
   return (
     <TouchableHighlight
-      onLongPress={() => {}}
-      underlayColor="black"
+      onLongPress={onLongPress}
+      underlayColor="transparent"
+      delayLongPress={3000}
     >
         <Image 
           style={styles.image}
