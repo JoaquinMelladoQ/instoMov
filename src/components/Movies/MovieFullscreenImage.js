@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     height: '100%',
     zIndex: 10,
     borderRadius: 15,
+    backgroundColor: 'black'
   },
   image: {
     width: '100%',
