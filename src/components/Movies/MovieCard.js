@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import Rating from '../Rating'
 import MovieCardImage from './MovieCardImage'
+import MovieFullscreenImage from './MovieFullscreenImage'
 
 const styles = StyleSheet.create({
   container: {
@@ -52,26 +53,43 @@ export default class MovieCard extends Component {
       validImage: true,
       starRating: 1,
       like: false,
+      showFullscreenImage: false,
     }
   }
 
   starRatingChange = starPosition => this.setState({ starRating: starPosition }) 
 
   toggleLike = () => this.setState(({ like }) => ({ like: !like }))
+
+  toggleFullscreen = () => this.setState(({ showFullscreenImage }) => ({ showFullscreenImage: !showFullscreenImage }))
   
   render() {
     const { posterurl, title, year, imdbRating } = this.props
-    const { isLoading, validImage, starRating, like } = this.state
+    const { 
+      showFullscreenImage, 
+      isLoading, 
+      validImage, 
+      starRating, 
+      like 
+    } = this.state
     return (
       <>
       <View style={styles.container}>
         { isLoading && <ActivityIndicator color="red" size="large" /> }
+        { 
+          showFullscreenImage 
+          && validImage 
+          && <MovieFullscreenImage 
+                onPress={this.toggleFullscreen}
+                source={{ uri: posterurl }}
+              /> 
+        }
         <MovieCardImage 
           validImage={validImage}
           posterurl={posterurl}
           onError={() => this.setState({ validImage: false })}
           onLoadEnd={() => this.setState({ isLoading: false })}
-          onLongPress={() => console.log('on long press')}
+          onLongPress={this.toggleFullscreen}
         />
         <View style={styles.likeRating}>
           <Rating 

@@ -1,15 +1,36 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Image, TouchableHighlight } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 10,
+    borderRadius: 15,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
 })
 
-const MovieFullscreenImage = () => {
+const MovieFullscreenImage = ({
+  source,
+  onPress,
+}) => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <TouchableHighlight 
+      style={styles.container}
+      underlayColor="black"
+      onPress={onPress}
+    >
+      <Image 
+        style={styles.image}
+        source={source}
+        resizeMode="contain"
+      />
+    </TouchableHighlight>
   )
 }
 

@@ -22,7 +22,6 @@ const MovieCardImage = ({
     <TouchableHighlight
       onLongPress={onLongPress}
       underlayColor="transparent"
-      delayLongPress={3000}
     >
         <Image 
           style={styles.image}
