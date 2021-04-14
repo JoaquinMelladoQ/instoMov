@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
+import Chip from '../Chip';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,9 +18,7 @@ const ActorsList = ({ actors }) => {
         showsVerticalScrollIndicator={false}
         keyExtractor={actor => actor}
         renderItem={({ item: actorName }) => (
-          <View>
-            <Text>{actorName}</Text>
-          </View>
+          <Chip actorName={actorName} />
         )}
       />
     </View>

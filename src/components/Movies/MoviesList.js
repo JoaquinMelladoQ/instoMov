@@ -1,13 +1,24 @@
 import React, { PureComponent } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import MovieCard from './MovieCard';
+import FilterButton from '../FilterButton';
+
+const styles = StyleSheet.create({
+  list: {
+    margin: 10,
+  },
+  filterButton: {
+    position: 'absolute',
+  },
+})
 
 export default class MoviesList extends PureComponent {
   render() {
     const { movies } = this.props
     return (
       <>
-        <FlatList 
+        <FlatList
+          style={styles.list}
           data={movies}
           keyExtractor={({ poster }) => poster}
           showsVerticalScrollIndicator={false}
@@ -31,6 +42,9 @@ export default class MoviesList extends PureComponent {
             )
           }}
         />
+        <View style={styles.filterButton}>
+          <FilterButton />
+        </View>
       </>
     );
   };
