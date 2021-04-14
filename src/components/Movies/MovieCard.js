@@ -6,6 +6,7 @@ import {
 import Rating from '../Rating'
 import MovieCardImage from './MovieCardImage'
 import MovieFullscreenImage from './MovieFullscreenImage'
+import ActorsList from './ActorsList'
 
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +42,7 @@ const styles = StyleSheet.create({
     padding: 0,
     elevation: 10,
     backgroundColor: 'white',
+    zIndex: 9,
   },
 })
 
@@ -64,7 +66,7 @@ export default class MovieCard extends Component {
   toggleFullscreen = () => this.setState(({ showFullscreenImage }) => ({ showFullscreenImage: !showFullscreenImage }))
   
   render() {
-    const { posterurl, title, year, imdbRating } = this.props
+    const { posterurl, title, year, imdbRating, actors } = this.props
     const { 
       showFullscreenImage, 
       isLoading, 
@@ -111,6 +113,7 @@ export default class MovieCard extends Component {
             {imdbRating}
           </Text>
         </View>
+        <ActorsList actors={actors}/>
       </View>
       </>
     );
