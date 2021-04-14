@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Modal, Button } from 'react-native';
 import MovieCard from './MovieCard';
 import FilterButton from '../FilterButton';
 
@@ -9,12 +9,24 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     position: 'absolute',
+    top: '70%',
+    left: '80%',
   },
 })
 
 export default class MoviesList extends PureComponent {
+    constructor(props) {
+      super(props)
+      this.state = { 
+        modalActive: false,
+      }
+    }
+  
+  toggleModal = () => this.setState(({ modalActive }) => ({ modalActive: !modalActive }))
+
   render() {
     const { movies } = this.props
+    const { modalActive } = this.state
     return (
       <>
         <FlatList
@@ -43,8 +55,13 @@ export default class MoviesList extends PureComponent {
           }}
         />
         <View style={styles.filterButton}>
-          <FilterButton />
+          <FilterButton onPress={this.toggleModal}/>
         </View>
+        <Modal
+          visible={modalActive}
+        >
+          <Button title="Cerrar Modal" onPress={this.toggleModal} />
+        </Modal>
       </>
     );
   };
