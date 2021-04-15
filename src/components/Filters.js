@@ -3,7 +3,10 @@ import { StyleSheet, View, Text } from 'react-native';
 import Chip from './Chip';
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
 })
 
 const Filters = ({ 
@@ -12,7 +15,12 @@ const Filters = ({
 }) => {
 
   const genresChip = moviesGenres.map((genre, index) => (
-    <Chip key={`genres-${index}`} value={genre} />
+    <Chip 
+      pressable
+      onPress={onPress}
+      key={`genres-${index}`} 
+      value={genre} 
+    />
   ))
 
   return (

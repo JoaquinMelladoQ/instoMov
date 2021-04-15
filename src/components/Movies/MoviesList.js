@@ -44,6 +44,10 @@ export default class MoviesList extends PureComponent {
 
   toggleModal = () => this.setState(({ modalActive }) => ({ modalActive: !modalActive }))
 
+  applyFilter = (genre) => {
+    console.log(genre);
+  }
+
   render() {
     const { movies } = this.props
     const { moviesGenres, modalActive } = this.state
@@ -84,7 +88,7 @@ export default class MoviesList extends PureComponent {
         >
           <Filters 
             moviesGenres={moviesGenres} 
-            onPress={() => {}}
+            onPress={this.applyFilter}
           />
           <Button title="Cerrar Modal" onPress={this.toggleModal} />
         </Modal>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,11 +16,15 @@ const styles = StyleSheet.create({
 })
 
 
-const Chip = ({ value }) => {
+const Chip = ({ value, pressable, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity 
+      disabled={!pressable}
+      onPress={() => onPress(value)}
+      style={styles.container}
+    >
       <Text style={styles.text}>{value}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
