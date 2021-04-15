@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
 })
 
 
-const Chip = ({ actorName }) => {
+const Chip = ({ value }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{actorName}</Text>
+      <Text style={styles.text}>{value}</Text>
     </View>
   )
 }

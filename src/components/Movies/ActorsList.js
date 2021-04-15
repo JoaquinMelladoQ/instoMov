@@ -18,7 +18,7 @@ const ActorsList = ({ actors }) => {
         showsVerticalScrollIndicator={false}
         keyExtractor={actor => actor}
         renderItem={({ item: actorName }) => (
-          <Chip actorName={actorName} />
+          <Chip value={actorName} />
         )}
       />
     </View>

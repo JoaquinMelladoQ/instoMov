@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { FlatList, View, StyleSheet, Modal, Button } from 'react-native';
 import MovieCard from './MovieCard';
 import FilterButton from '../FilterButton';
+import Filters from '../Filters';
 
 const styles = StyleSheet.create({
   list: {
@@ -19,14 +20,34 @@ export default class MoviesList extends PureComponent {
       super(props)
       this.state = { 
         modalActive: false,
+        moviesGenres: [],
       }
     }
   
+  componentDidMount() {
+    this.getGenresDataFromMovies()
+  };
+  
+
+  getGenresDataFromMovies = () => {
+    const { movies } = this.props;
+
+    const genresData = movies.reduce((genresTypes, movie) => {
+      return [ ...genresTypes, ...movie.genres ]
+    }, [])
+
+    console.log({ genresData });
+
+    const genresSet = new Set(genresData) // elimina repetidos
+    this.setState({ moviesGenres: [ ...genresSet ] }) // regresa a un arreglo con spead
+  }
+
   toggleModal = () => this.setState(({ modalActive }) => ({ modalActive: !modalActive }))
 
   render() {
     const { movies } = this.props
-    const { modalActive } = this.state
+    const { moviesGenres, modalActive } = this.state
+
     return (
       <>
         <FlatList
@@ -59,7 +80,12 @@ export default class MoviesList extends PureComponent {
         </View>
         <Modal
           visible={modalActive}
+          animationType="slide"
         >
+          <Filters 
+            moviesGenres={moviesGenres} 
+            onPress={() => {}}
+          />
           <Button title="Cerrar Modal" onPress={this.toggleModal} />
         </Modal>
       </>
