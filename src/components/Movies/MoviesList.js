@@ -47,10 +47,14 @@ export default class MoviesList extends PureComponent {
 
   applyFilter = (genre) => {
     const { movies } = this.props
-  const filteredMovies = movies.filter((movie) => 
+    const filteredMovies = movies.filter((movie) => 
       movie.genres.includes(genre)
     ) 
-    this.setState({ movies: filteredMovies, modalActive: false })
+    this.setState({ movies: filteredMovies, modalActive: false },
+      () => {
+        this.flatlist.scrollToOffset({ animated: true, offset:0 })
+      }
+    )
   }
 
   render() {
@@ -59,6 +63,7 @@ export default class MoviesList extends PureComponent {
     return (
       <>
         <FlatList
+          ref={(ref) => (this.flatlist = ref)}
           style={styles.list}
           data={movies}
           keyExtractor={({ poster }) => poster}
