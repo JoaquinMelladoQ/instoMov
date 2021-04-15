@@ -19,6 +19,7 @@ export default class MoviesList extends PureComponent {
     constructor(props) {
       super(props)
       this.state = { 
+        movies: props.movies,
         modalActive: false,
         moviesGenres: [],
       }
@@ -45,12 +46,15 @@ export default class MoviesList extends PureComponent {
   toggleModal = () => this.setState(({ modalActive }) => ({ modalActive: !modalActive }))
 
   applyFilter = (genre) => {
-    console.log(genre);
+    const { movies } = this.props
+  const filteredMovies = movies.filter((movie) => 
+      movie.genres.includes(genre)
+    ) 
+    this.setState({ movies: filteredMovies, modalActive: false })
   }
 
   render() {
-    const { movies } = this.props
-    const { moviesGenres, modalActive } = this.state
+    const { moviesGenres, modalActive, movies } = this.state
 
     return (
       <>
