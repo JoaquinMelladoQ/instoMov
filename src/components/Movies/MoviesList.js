@@ -37,7 +37,7 @@ export default class MoviesList extends PureComponent {
       return [ ...genresTypes, ...movie.genres ]
     }, [])
 
-    console.log({ genresData });
+    //console.log({ genresData });
 
     const genresSet = new Set(genresData) // elimina repetidos
     this.setState({ moviesGenres: [ ...genresSet ] }) // regresa a un arreglo con spead
