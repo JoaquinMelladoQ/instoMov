@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-  View, ActivityIndicator, 
+  View, ActivityIndicator, TouchableOpacity, 
   Text, Image, Button, Modal, StyleSheet
 } from 'react-native';
 import Rating from '../Rating'
@@ -45,6 +45,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     zIndex: 9,
   },
+  descriptionTextContainer: {
+    height: 50, 
+    backgroundColor: '#636e72',
+  },
+  textCerrarModal: {
+    textAlign: 'center', 
+    justifyContent: 'center', 
+    color: 'white', 
+    fontWeight: 'bold',
+  }
 })
 
 export default class MovieCard extends Component {
@@ -130,7 +140,11 @@ export default class MovieCard extends Component {
           <DescriptionMovie 
             storyline={storyline}
           />
-          <Button title="Cerrar modal" onPress={this.toggleModalDescription} />
+          <View style={styles.descriptionTextContainer}>
+            <TouchableOpacity onPress={this.toggleModalDescription}>
+              <Text style={styles.textCerrarModal}>Cerrar</Text>
+            </TouchableOpacity>
+          </View>
         </Modal>
         <ActorsList actors={actors}/>
       </View>

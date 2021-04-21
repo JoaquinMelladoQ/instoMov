@@ -17,11 +17,10 @@ const styles = StyleSheet.create({
 export default class DescriptionMovie extends Component {
   render() {
     const { 
-      onDescriptionPress = () => {},
       storyline,
     } = this.props
 
-    console.log({ storyline });
+    //console.log({ storyline });
 
     return (
       <View style={styles.container}>
