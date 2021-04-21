@@ -7,6 +7,7 @@ import Rating from '../Rating'
 import MovieCardImage from './MovieCardImage'
 import MovieFullscreenImage from './MovieFullscreenImage'
 import ActorsList from './ActorsList'
+import GenresList from './GenresList'
 import DescriptionMovie from '../DescriptionMovie'
 
 const styles = StyleSheet.create({
@@ -152,6 +153,7 @@ export default class MovieCard extends Component {
             </TouchableOpacity>
           </View>
         </Modal>
+        <GenresList genres={genres}/>
         <ActorsList actors={actors}/>
       </View>
       </>
