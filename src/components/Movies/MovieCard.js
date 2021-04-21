@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { 
   View, ActivityIndicator, 
-  Text, Image, StyleSheet
+  Text, Image, Button, Modal, StyleSheet
 } from 'react-native';
 import Rating from '../Rating'
 import MovieCardImage from './MovieCardImage'
@@ -57,7 +57,7 @@ export default class MovieCard extends Component {
       starRating: 1,
       like: false,
       showFullscreenImage: false,
-      descriptionOpen: false,
+      modalDescriptionOpen: false,
     }
   }
 
@@ -68,7 +68,7 @@ export default class MovieCard extends Component {
 
   toggleFullscreen = () => this.setState(({ showFullscreenImage }) => ({ showFullscreenImage: !showFullscreenImage }))
 
-  toggleDescription = () => this.setState(({ descriptionOpen }) => ({ descriptionOpen: !descriptionOpen }))
+  toggleModalDescription = () => this.setState(({ modalDescriptionOpen }) => ({ modalDescriptionOpen: !modalDescriptionOpen }))
 
   render() {
     const { posterurl, title, year, imdbRating, actors, storyline } = this.props
@@ -78,7 +78,7 @@ export default class MovieCard extends Component {
       validImage, 
       starRating, 
       like,
-      descriptionOpen,
+      modalDescriptionOpen,
     } = this.state
     //console.log({  });
     return (
@@ -121,14 +121,17 @@ export default class MovieCard extends Component {
           </Text>
         </View>
         <View>
-          <DescriptionMovie 
-            descriptionOpen={descriptionOpen}
-            storyline={storyline}
-            onDescriptionPress={this.toggleDescription}
-          >
-            <Text>{storyline}</Text>
-          </DescriptionMovie>
+          <Button title="Ver Descripción" onPress={this.toggleModalDescription}/>
         </View>
+        <Modal
+          visible={modalDescriptionOpen}
+          animationType="slide"
+        >
+          <DescriptionMovie 
+            storyline={storyline}
+          />
+          <Button title="Cerrar modal" onPress={this.toggleModalDescription} />
+        </Modal>
         <ActorsList actors={actors}/>
       </View>
       </>
