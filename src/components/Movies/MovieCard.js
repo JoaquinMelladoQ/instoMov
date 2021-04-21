@@ -87,8 +87,6 @@ export default class MovieCard extends Component {
       year, imdbRating, 
       actors, storyline, genres } = this.props
 
-    console.log({ genres });
-
     const { 
       showFullscreenImage, 
       isLoading, 
@@ -97,7 +95,7 @@ export default class MovieCard extends Component {
       like,
       modalDescriptionOpen,
     } = this.state
-    //console.log({  });
+
     return (
       <>
       <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import Chip from '../Chip';
 
 const styles = StyleSheet.create({
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
 })
 
 const GenresList = ({ genres }) => {
+  //console.log({ genres });
   return (
     <View>
       <FlatList 
