@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     zIndex: 9,
   },
-  descriptionTextContainer: {
+  descriptionContainer: {
     height: 50, 
     backgroundColor: '#636e72',
   },
-  textCerrarModal: {
+  textModal: {
     textAlign: 'center', 
     justifyContent: 'center', 
     color: 'white', 
@@ -81,7 +81,13 @@ export default class MovieCard extends Component {
   toggleModalDescription = () => this.setState(({ modalDescriptionOpen }) => ({ modalDescriptionOpen: !modalDescriptionOpen }))
 
   render() {
-    const { posterurl, title, year, imdbRating, actors, storyline } = this.props
+    const { 
+      posterurl, title, 
+      year, imdbRating, 
+      actors, storyline, genres } = this.props
+
+    console.log({ genres });
+
     const { 
       showFullscreenImage, 
       isLoading, 
@@ -135,14 +141,14 @@ export default class MovieCard extends Component {
         </View>
         <Modal
           visible={modalDescriptionOpen}
-          animationType="slide"
+          animationType="fade"
         >
           <DescriptionMovie 
             storyline={storyline}
           />
-          <View style={styles.descriptionTextContainer}>
+          <View style={styles.descriptionContainer}>
             <TouchableOpacity onPress={this.toggleModalDescription}>
-              <Text style={styles.textCerrarModal}>Cerrar</Text>
+              <Text style={styles.textModal}>Cerrar</Text>
             </TouchableOpacity>
           </View>
         </Modal>

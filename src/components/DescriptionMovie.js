@@ -12,8 +12,10 @@ const styles = StyleSheet.create({
   text: {
     marginHorizontal: 10,
     fontWeight: 'bold',
+    fontStyle: 'italic',
   },
-})
+});
+
 export default class DescriptionMovie extends Component {
   render() {
     const { 
