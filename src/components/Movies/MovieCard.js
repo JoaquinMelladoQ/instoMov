@@ -7,6 +7,7 @@ import Rating from '../Rating'
 import MovieCardImage from './MovieCardImage'
 import MovieFullscreenImage from './MovieFullscreenImage'
 import ActorsList from './ActorsList'
+import DescriptionMovie from '../DescriptionMovie'
 
 const styles = StyleSheet.create({
   container: {
@@ -56,24 +57,30 @@ export default class MovieCard extends Component {
       starRating: 1,
       like: false,
       showFullscreenImage: false,
+      descriptionOpen: false,
     }
   }
+
 
   starRatingChange = starPosition => this.setState({ starRating: starPosition }) 
 
   toggleLike = () => this.setState(({ like }) => ({ like: !like }))
 
   toggleFullscreen = () => this.setState(({ showFullscreenImage }) => ({ showFullscreenImage: !showFullscreenImage }))
-  
+
+  toggleDescription = () => this.setState(({ descriptionOpen }) => ({ descriptionOpen: !descriptionOpen }))
+
   render() {
-    const { posterurl, title, year, imdbRating, actors } = this.props
+    const { posterurl, title, year, imdbRating, actors, storyline } = this.props
     const { 
       showFullscreenImage, 
       isLoading, 
       validImage, 
       starRating, 
-      like 
+      like,
+      descriptionOpen,
     } = this.state
+    //console.log({  });
     return (
       <>
       <View style={styles.container}>
@@ -112,6 +119,15 @@ export default class MovieCard extends Component {
             style={[styles.description, styles.textColor, styles.bigFont]}>
             {imdbRating}
           </Text>
+        </View>
+        <View>
+          <DescriptionMovie 
+            descriptionOpen={descriptionOpen}
+            storyline={storyline}
+            onDescriptionPress={this.toggleDescription}
+          >
+            <Text>{storyline}</Text>
+          </DescriptionMovie>
         </View>
         <ActorsList actors={actors}/>
       </View>

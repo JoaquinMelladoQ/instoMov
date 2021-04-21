@@ -75,6 +75,7 @@ export default class MoviesList extends PureComponent {
               title,
               imdbRating,
               actors,
+              storyline,
             }
           }) => {
             return (
@@ -84,6 +85,7 @@ export default class MoviesList extends PureComponent {
                 title={title}
                 imdbRating={imdbRating}
                 actors={actors}
+                storyline={storyline}
               />
             )
           }}
