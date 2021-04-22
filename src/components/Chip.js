@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Chip = ({ value, genresValue, pressable, onPress, colors }) => {
+const Chip = ({ value, genresValue, pressable, onPress, colors = 'gray' }) => {
   
   //console.log({ colors }, 'from Chip component');
   //console.log({ value }, 'from Chip component');
@@ -24,6 +24,7 @@ const Chip = ({ value, genresValue, pressable, onPress, colors }) => {
 
   return (
     <TouchableOpacity 
+      value={value}
       colors={colors}
       genresValue={genresValue}
       disabled={!pressable}

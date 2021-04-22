@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Chip from '../Chip';
+import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   container: {
@@ -21,6 +22,7 @@ const GenresList = ({ genres }) => {
         keyExtractor={genre => genre}
         renderItem={({ item: genreName }) => (
           <Chip 
+            colors={colors}
             genresValue={genreName} 
           />
         )}
