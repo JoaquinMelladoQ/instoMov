@@ -1,29 +1,31 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Chip from '../Chip';
-import colors from '../../lib/colors.json'
+//import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
+    //backgroundColor: 'red'
   },
 })
 
-const GenresList = ({ genres }) => {
+const GenresList = ({ genres, colors }) => {
   //console.log({ genres });
   //console.log({ colors }, 'from GenresList comp');
   return (
     <View>
       <FlatList 
-        data={genres}
         style={styles.container}
+        data={genres}
         horizontal
         showsVerticalScrollIndicator={false}
         keyExtractor={genre => genre}
         renderItem={({ item: genreName }) => (
           <Chip 
-            colors={colors}
+            colors={colors[genreName]}
             genresValue={genreName} 
+            //style={{backgroundColor: colors}}
           />
         )}
       />

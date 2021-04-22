@@ -9,6 +9,7 @@ import MovieFullscreenImage from './MovieFullscreenImage'
 import ActorsList from './ActorsList'
 import GenresList from './GenresList'
 import DescriptionMovie from '../DescriptionMovie'
+//import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   container: {
@@ -85,7 +86,10 @@ export default class MovieCard extends Component {
     const { 
       posterurl, title, 
       year, imdbRating, 
-      actors, storyline, genres } = this.props
+      actors, storyline, 
+      genres, 
+      colors, 
+    } = this.props
 
     const { 
       showFullscreenImage, 
@@ -96,6 +100,7 @@ export default class MovieCard extends Component {
       modalDescriptionOpen,
     } = this.state
 
+    //console.log({ colors }, 'from MovieCard, undefined');
     return (
       <>
       <View style={styles.container}>
@@ -151,7 +156,11 @@ export default class MovieCard extends Component {
             </TouchableOpacity>
           </View>
         </Modal>
-        <GenresList genres={genres}/>
+        <GenresList 
+          //style={{ backgroundColor: colors }}
+          colors={colors}
+          genres={genres}
+        />
         <ActorsList actors={actors}/>
       </View>
       </>

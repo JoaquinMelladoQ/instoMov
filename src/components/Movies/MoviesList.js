@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet, Modal, Button } from 'react-native';
 import MovieCard from './MovieCard';
 import FilterButton from '../FilterButton';
 import Filters from '../Filters';
+//import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   list: {
@@ -59,8 +60,8 @@ export default class MoviesList extends PureComponent {
 
   render() {
     const { moviesGenres, modalActive, movies } = this.state
-    //const { colors } = this.props
-    //console.log({ colors })
+    const { colors } = this.props
+    //console.log({ colors }, 'from MoviesList, undefined')
 
     return (
       <>
@@ -90,6 +91,7 @@ export default class MoviesList extends PureComponent {
                 actors={actors}
                 storyline={storyline}
                 genres={genres}
+                colors={colors}
               />
             )
           }}
@@ -102,6 +104,7 @@ export default class MoviesList extends PureComponent {
           animationType="slide"
         >
           <Filters 
+            colors={colors}
             moviesGenres={moviesGenres} 
             onPress={this.applyFilter}
           />

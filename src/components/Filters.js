@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingTop: '20%',
+    backgroundColor: '#18dcff'
   },
 })
 

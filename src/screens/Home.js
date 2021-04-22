@@ -17,12 +17,13 @@ import MoviesList from '../components/Movies/MoviesList';
  *};
  */
 
-const Home = ({ movies }) => {
+const Home = ({ movies, colors }) => {
   //console.log({ colors })
   return (
     <>
       <Header title="La Cartelera"/>
       <MoviesList 
+        colors={colors}
         movies={movies}
       />
     </> 
