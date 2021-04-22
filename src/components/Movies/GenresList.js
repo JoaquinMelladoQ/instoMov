@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
 
 const GenresList = ({ genres }) => {
   //console.log({ genres });
+  //console.log({ colors }, 'from GenresList comp');
   return (
     <View>
       <FlatList 
@@ -19,7 +20,9 @@ const GenresList = ({ genres }) => {
         showsVerticalScrollIndicator={false}
         keyExtractor={genre => genre}
         renderItem={({ item: genreName }) => (
-          <Chip value={genreName} />
+          <Chip 
+            genresValue={genreName} 
+          />
         )}
       />
     </View>

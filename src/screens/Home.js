@@ -17,11 +17,16 @@ import MoviesList from '../components/Movies/MoviesList';
  *};
  */
 
-const Home = ({ movies }) => (
-  <>
-    <Header title="La Cartelera"/>
-    <MoviesList movies={movies}/>
-  </>
-);
+const Home = ({ movies }) => {
+  //console.log({ colors })
+  return (
+    <>
+      <Header title="La Cartelera"/>
+      <MoviesList 
+        movies={movies}
+      />
+    </> 
+  )
+}
 
 export default Home;

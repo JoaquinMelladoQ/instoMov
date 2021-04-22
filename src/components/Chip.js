@@ -16,14 +16,21 @@ const styles = StyleSheet.create({
 })
 
 
-const Chip = ({ value, pressable, onPress }) => {
+const Chip = ({ value, genresValue, pressable, onPress, colors }) => {
+  
+  //console.log({ colors }, 'from Chip component');
+  //console.log({ value }, 'from Chip component');
+  console.log({ genresValue }, 'Chip component, genresValue comes from GenresList comp');
+
   return (
     <TouchableOpacity 
+      colors={colors}
+      genresValue={genresValue}
       disabled={!pressable}
-      onPress={() => onPress(value)}
-      style={styles.container}
+      onPress={() => onPress(value, genresValue)}
+      style={[styles.container, { backgroundColor: colors }]}
     >
-      <Text style={styles.text}>{value}</Text>
+      <Text style={styles.text}>{value}{genresValue}</Text>
     </TouchableOpacity>
   )
 }

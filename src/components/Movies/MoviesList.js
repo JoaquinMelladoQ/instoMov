@@ -59,6 +59,8 @@ export default class MoviesList extends PureComponent {
 
   render() {
     const { moviesGenres, modalActive, movies } = this.state
+    //const { colors } = this.props
+    //console.log({ colors })
 
     return (
       <>

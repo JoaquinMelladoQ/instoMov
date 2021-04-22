@@ -10,10 +10,13 @@ const styles = StyleSheet.create({
 })
 
 export default App = () => {
+  //console.log({ colors });
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle={'dark-content'}/>
-        <Home movies={movies}/>
+        <Home 
+          movies={movies}
+        />
       </SafeAreaView>
     )
 }
