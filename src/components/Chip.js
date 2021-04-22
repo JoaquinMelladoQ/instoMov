@@ -20,7 +20,7 @@ const Chip = ({
   pressable, onPress, 
   colors = 'gray'
 }) => {
-  console.log({ colors }, 'No se muestra si es que NO esá abierto el modal');
+  //console.log({ colors }, 'No se muestra si es que NO esá abierto el modal');
   //console.log({ value }, 'from Chip component');
   //console.log({ genresValue }, 'Chip component, genresValue comes from GenresList comp');
   return (
