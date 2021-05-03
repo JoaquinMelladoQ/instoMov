@@ -3,7 +3,6 @@ import { FlatList, View, StyleSheet, Modal, Button } from 'react-native';
 import MovieCard from './MovieCard';
 import FilterButton from '../FilterButton';
 import Filters from '../Filters';
-//import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   list: {
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
     top: '70%',
     left: '80%',
   },
-})
+});
 
 export default class MoviesList extends PureComponent {
     constructor(props) {
@@ -36,32 +35,29 @@ export default class MoviesList extends PureComponent {
 
     const genresData = movies.reduce((genresTypes, movie) => {
       return [ ...genresTypes, ...movie.genres ]
-    }, [])
-
-    //console.log({ genresData });
+    }, []);
 
     const genresSet = new Set(genresData) // elimina repetidos
     this.setState({ moviesGenres: [ ...genresSet ] }) // regresa a un arreglo con spead
-  }
+  };
 
   toggleModal = () => this.setState(({ modalActive }) => ({ modalActive: !modalActive }))
 
   applyFilter = (genre) => {
-    const { movies } = this.props
+    const { movies } = this.props;
     const filteredMovies = movies.filter((movie) => 
       movie.genres.includes(genre)
-    ) 
+    )
     this.setState({ movies: filteredMovies, modalActive: false },
       () => {
         this.flatlist.scrollToOffset({ animated: true, offset:0 })
       }
     )
-  }
+  };
 
   render() {
-    const { moviesGenres, modalActive, movies } = this.state
-    const { colors } = this.props
-    //console.log({ colors }, 'from MoviesList, undefined')
+    const { moviesGenres, modalActive, movies } = this.state;
+    const { colors } = this.props;
 
     return (
       <>

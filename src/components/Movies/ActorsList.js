@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import Chip from '../Chip';
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
   },
-})
+});
 
 const ActorsList = ({ actors }) => {
   return (
@@ -24,7 +24,7 @@ const ActorsList = ({ actors }) => {
         )}
       />
     </View>
-  )
-}
+  );
+};
 
-export default ActorsList 
+export default ActorsList;

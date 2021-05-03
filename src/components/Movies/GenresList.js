@@ -1,18 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Chip from '../Chip';
-//import colors from '../../lib/colors.json'
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
-    //backgroundColor: 'red'
   },
-})
+});
 
 const GenresList = ({ genres, colors }) => {
-  //console.log({ genres });
-  //console.log({ colors }, 'from GenresList comp');
   return (
     <View>
       <FlatList 
@@ -25,12 +21,11 @@ const GenresList = ({ genres, colors }) => {
           <Chip 
             colors={colors[genreName]}
             genresValue={genreName} 
-            //style={{backgroundColor: colors}}
           />
         )}
       />
     </View>
-  )
-}
+  );
+};
 
-export default GenresList 
+export default GenresList;

@@ -20,9 +20,7 @@ export default class DescriptionMovie extends Component {
   render() {
     const { 
       storyline,
-    } = this.props
-
-    //console.log({ storyline });
+    } = this.props;
 
     return (
       <View style={styles.container}>

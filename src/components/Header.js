@@ -1,8 +1,6 @@
-//import React, { PureComponent } from 'react';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-
 
 const styles = StyleSheet.create({
   container: {
@@ -19,20 +17,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textDecorationLine: 'underline',
   }
-})
-
-/*
- *export default class Header extends PureComponent {
- *  render() {
- *    const { title } = this.props
- *    return (
- *      <View style={styles.container}>
- *        <Text style={styles.title}>{title}</Text>
- *      </View>
- *    );
- *  };
- *};
- */
+});
 
 const Header = ({ title }) => (
   <View style={styles.container}>
@@ -44,8 +29,8 @@ export default Header;
 
 Header.propTypes = {
   title: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   title: 'Sin header',
-}
+};

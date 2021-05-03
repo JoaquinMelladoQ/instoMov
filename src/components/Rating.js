@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { 
+  View, 
+  StyleSheet, 
+  TouchableHighlight, 
+  TouchableOpacity 
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const styles = StyleSheet.create({
@@ -15,56 +20,7 @@ const styles = StyleSheet.create({
   heart: {
     padding: 5,
   },
-})
-
-/*
- *export default class Rating extends Component {
- *  render() {
- *    const { 
- *      star, starNumber = 5,
- *      starRating, onRatingPress = () => {}, 
- *      heart, like
- *    } = this.props
- *
- *    if (star) {
- *      const starTotalNumber = Array.from({ length: starNumber })
- *        .map((_, index) => (
- *          <TouchableHighlight
- *            key={`star-${index}`}
- *            underlayColor="transparent"
- *            onPress={() => onRatingPress(index + 1)}
- *          >
- *            <Icon 
- *              name="star"
- *              size={30}
- *              color={index < starRating ? '#f1c40f' : '#95a6a6'}
- *            />
- *          </TouchableHighlight>
- *        ))
- *      return (
- *        <View style={styles.starContainer}>
- *          {starTotalNumber}
- *        </View>
- *      )
- *    }
- *    if (heart) {
- *      return (
- *        <TouchableOpacity 
- *          style={styles.heart}
- *          onPress={onRatingPress}
- *        >
- *          <Icon 
- *            name="heart" 
- *            size={30} 
- *            color={like ? '#e74c3c' : '#95a6a6'}
- *          />
- *        </TouchableOpacity>
- *      ) 
- *    }
- *    return null
- *  };
- *};
- */
+});
 
 const Rating = ({ 
   star, 
@@ -88,13 +44,13 @@ const Rating = ({
               color={index < starRating ? '#f1c40f' : '#95a6a6'}
             />
           </TouchableHighlight>
-        ))
+        ));
       return (
         <View style={styles.starContainer}>
           {starTotalNumber}
         </View>
-      )
-    }
+      );
+    };
     if (heart) {
       return (
         <TouchableOpacity 
@@ -107,9 +63,9 @@ const Rating = ({
             color={like ? '#e74c3c' : '#95a6a6'}
           />
         </TouchableOpacity>
-      ) 
-    }
+      ); 
+    };
     return null
 };
 
-export default Rating
+export default Rating;

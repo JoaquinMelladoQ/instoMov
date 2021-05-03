@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#f1c40f',
   },
-})
+});
 
 const FilterButton = ({
   onPress = () => {},
@@ -24,8 +24,8 @@ const FilterButton = ({
         size={30}
       />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default FilterButton
+export default FilterButton;
 

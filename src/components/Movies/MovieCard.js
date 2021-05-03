@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { 
   View, ActivityIndicator, TouchableOpacity, 
-  Text, Image, Button, Modal, StyleSheet
+  Text, Button, Modal, StyleSheet
 } from 'react-native';
-import Rating from '../Rating'
-import MovieCardImage from './MovieCardImage'
-import MovieFullscreenImage from './MovieFullscreenImage'
-import ActorsList from './ActorsList'
-import GenresList from './GenresList'
-import DescriptionMovie from '../DescriptionMovie'
-//import colors from '../../lib/colors.json'
+import Rating from '../Rating';
+import MovieCardImage from './MovieCardImage';
+import MovieFullscreenImage from './MovieFullscreenImage';
+import ActorsList from './ActorsList';
+import GenresList from './GenresList';
+import DescriptionMovie from '../DescriptionMovie';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontWeight: 'bold',
   }
-})
+});
 
 const MovieCard = ({     
   posterurl, title, 
@@ -65,17 +64,17 @@ const MovieCard = ({
   actors, storyline, 
   genres, 
   colors, }) => {
-  const [isLoading, setLoading] = useState(true)
-  const [validImage, setValidImage] = useState(true)
-  const [starRating, setStarRating] = useState(1)
-  const [like, setLike] = useState(false)
-  const [showFullscreenImage, setShowFullscreen] = useState(false)
-  const [modalDescriptionOpen, setModalDescriptionOpen] = useState(false)
+  const [isLoading, setLoading] = useState(true);
+  const [validImage, setValidImage] = useState(true);
+  const [starRating, setStarRating] = useState(1);
+  const [like, setLike] = useState(false);
+  const [showFullscreenImage, setShowFullscreen] = useState(false);
+  const [modalDescriptionOpen, setModalDescriptionOpen] = useState(false);
 
-  const starRatingChange = (starPosition) => setStarRating(starPosition)
-  const toggleLike = () => setLike(!like)
-  const toggleFullScreen = () => setShowFullscreen(!showFullscreenImage)
-  const toggleModalDescription = () => setModalDescriptionOpen(!modalDescriptionOpen)
+  const starRatingChange = (starPosition) => setStarRating(starPosition);
+  const toggleLike = () => setLike(!like);
+  const toggleFullScreen = () => setShowFullscreen(!showFullscreenImage);
+  const toggleModalDescription = () => setModalDescriptionOpen(!modalDescriptionOpen);
 
   return (
     <>
@@ -133,7 +132,6 @@ const MovieCard = ({
         </View>
       </Modal>
       <GenresList 
-        //style={{ backgroundColor: colors }}
         colors={colors}
         genres={genres}
       />

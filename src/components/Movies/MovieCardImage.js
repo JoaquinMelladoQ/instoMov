@@ -1,5 +1,5 @@
-import React from 'react'
-import { Image, StyleSheet, TouchableHighlight } from 'react-native'
+import React from 'react';
+import { Image, StyleSheet, TouchableHighlight } from 'react-native';
 
 const styles = StyleSheet.create({
   image: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#34495e',
   },
-})
+});
 
 const MovieCardImage = ({
   validImage,
@@ -34,7 +34,7 @@ const MovieCardImage = ({
           onLoadEnd={onLoadEnd}
         />
     </TouchableHighlight>
-  )
-}
+  );
+};
 
-export default MovieCardImage
+export default MovieCardImage;

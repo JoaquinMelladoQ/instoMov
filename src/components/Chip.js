@@ -13,16 +13,14 @@ const styles = StyleSheet.create({
     color: '#bdc3c7',
     fontWeight: 'bold',
   },
-})
+});
 
 const Chip = ({ 
   value, genresValue, 
   pressable, onPress, 
   colors = 'gray'
 }) => {
-  //console.log({ colors }, 'No se muestra si es que NO esá abierto el modal');
-  //console.log({ value }, 'from Chip component');
-  //console.log({ genresValue }, 'Chip component, genresValue comes from GenresList comp');
+
   return (
     <TouchableOpacity 
       value={value}
@@ -34,7 +32,7 @@ const Chip = ({
     >
       <Text style={styles.text}>{value}{genresValue}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default Chip
+export default Chip;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Chip from './Chip';
-import colors from '../lib/colors.json'
+import colors from '../lib/colors.json';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,13 +10,12 @@ const styles = StyleSheet.create({
     paddingTop: '20%',
     backgroundColor: '#18dcff'
   },
-})
+});
 
 const Filters = ({ 
   moviesGenres,
   onPress,
 }) => {
-  //console.log({ colors }, 'from filter component');
 
   const genresChip = moviesGenres.map((genre, index) => (
     <Chip 
@@ -30,11 +29,10 @@ const Filters = ({
 
   return (
     <View 
-      style={styles.container}
-    >
+      style={styles.container}>
       {genresChip}
     </View>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;
