@@ -9,6 +9,7 @@ import MovieFullscreenImage from './MovieFullscreenImage';
 import ActorsList from './ActorsList';
 import GenresList from './GenresList';
 import DescriptionMovie from '../DescriptionMovie';
+import { useRoute, useNavigation } from '@react-navigation/core';
 
 const styles = StyleSheet.create({
   container: {
@@ -76,6 +77,9 @@ const MovieCard = ({
   const toggleFullScreen = () => setShowFullscreen(!showFullscreenImage);
   const toggleModalDescription = () => setModalDescriptionOpen(!modalDescriptionOpen);
 
+  const routes = useRoute();
+  const navigation = useNavigation();
+
   return (
     <>
     <View style={styles.container}>
@@ -93,7 +97,9 @@ const MovieCard = ({
         posterurl={posterurl}
         onError={() => setValidImage(validImage)}
         onLoadEnd={() => setLoading(isLoading)}
-        onLongPress={toggleFullScreen}
+        onLongPress={
+          () => navigation.navigate('MovieScreen')
+        }
       />
       <View style={styles.likeRating}>
         <Rating 
