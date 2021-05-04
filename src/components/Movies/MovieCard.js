@@ -65,6 +65,10 @@ const MovieCard = ({
   actors, storyline, 
   genres, 
   colors, }) => {
+
+  const route = { storyline, title, posterurl }
+  const navigation = useNavigation();
+
   const [isLoading, setLoading] = useState(true);
   const [validImage, setValidImage] = useState(true);
   const [starRating, setStarRating] = useState(1);
@@ -77,8 +81,7 @@ const MovieCard = ({
   const toggleFullScreen = () => setShowFullscreen(!showFullscreenImage);
   const toggleModalDescription = () => setModalDescriptionOpen(!modalDescriptionOpen);
 
-  const routes = useRoute();
-  const navigation = useNavigation();
+  //console.log({ route });
 
   return (
     <>
@@ -98,7 +101,11 @@ const MovieCard = ({
         onError={() => setValidImage(validImage)}
         onLoadEnd={() => setLoading(isLoading)}
         onLongPress={
-          () => navigation.navigate('MovieScreen')
+          () => navigation.navigate('MovieScreen', {
+            storyline,
+            title,
+            posterurl,
+          })
         }
       />
       <View style={styles.likeRating}>

@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    zIndex: 10,
     borderRadius: 15,
     backgroundColor: 'black'
   },
@@ -19,7 +18,9 @@ const styles = StyleSheet.create({
 const MovieFullscreenImage = ({
   source,
   onPress,
+  movies,
 }) => {
+  console.log({ movies });
   return (
     <TouchableHighlight 
       style={styles.container}
